@@ -18,15 +18,7 @@ export default function CoverImage(props: CoverImageProps) {
         'transition-shadow duration-200 hover:shadow-medium': slug,
       })}
     >
-      <Image
-        className="h-auto w-full"
-        width={2000}
-        height={1000}
-        alt={`Cover Image for ${title}`}
-        src={urlForImage(source).height(1000).width(2000).url()}
-        sizes="100vw"
-        priority={priority}
-      />
+     
     </div>
   ) : (
     <div style={{ paddingTop: '50%', backgroundColor: '#ddd' }} />
