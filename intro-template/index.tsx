@@ -37,18 +37,7 @@ export default memo(function IntroTemplate() {
   }
 
   return (
-    <div className="flex justify-center border border-gray-200 bg-gray-50">
-    
-                </div>
-              }
-            />
-          </ol>
-          <div className="text-center text-xs text-gray-700 md:invisible">
-            <RemoveBlock url={removeBlockURL} />
-          </div>
-        </div>
-      </div>
-    </div>
+     <>
   )
 })
 
