@@ -1,3 +1,4 @@
 .portableText a {
   @apply underline transition-colors duration-200 hover:text-success;
 }
+body {padding:3em;}
