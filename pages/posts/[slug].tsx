@@ -11,7 +11,7 @@ import { lazy } from 'react'
 
 import { Suspense } from 'react'; // Import Suspense from React
 
-export default function ProjectSlugRoute(props: PageProps) {
+export function ProjectSlugRoute(props: PageProps) {
   const { settings, post, morePosts, preview, token } = props;
 
   if (preview) {
