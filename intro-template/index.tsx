@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { memo, useEffect, useState } from 'react'
 
-import cover from './cover.png'
+ 
 
 export default memo(function IntroTemplate() {
   const [studioURL, setStudioURL] = useState(null)
@@ -40,10 +40,7 @@ export default memo(function IntroTemplate() {
     <div className="flex justify-center border border-gray-200 bg-gray-50">
       <div className="mb-8 mt-20 grid max-w-screen-2xl grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32 ">
         <div className="self-center">
-          <Image
-            alt="An illustration of a browser window, a terminal window, the Sanity.io logo, and the NextJS logo"
-            src={cover}
-          />
+         
           <div className="mt-10 hidden px-14 text-xs text-gray-700 md:block">
            
           </div>
