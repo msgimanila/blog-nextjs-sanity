@@ -48,6 +48,24 @@ export default memo(function IntroTemplate() {
             <RemoveBlock url={removeBlockURL} />
           </div>
         </div>
+{morePosts.length > 0 && (
+  <div className="more-stories-section">
+    <h2>More Stories</h2>
+    <div className="stories-grid">
+      {morePosts.map((post) => (
+        <div key={post.slug.current} className="post-preview">
+          <Link href={`/post/${post.slug.current}`}>
+            <a>
+              <img src={post.coverImage.url} alt={post.title} />
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+            </a>
+          </Link>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
 
         <div className="mx-6 md:mx-0 md:mr-24">
           <h2 className="mb-8 text-xl font-bold tracking-wide md:text-5xl">
@@ -76,6 +94,8 @@ export default memo(function IntroTemplate() {
           )}
 
           <ol>
+
+            
             <Box
               circleTitle="1"
               element={
@@ -238,7 +258,7 @@ const RemoveBlock = ({ url }) => (
     target="_blank"
     rel="noreferrer"
   >
-    How to remove this block?
+   
   </a>
 )
 
