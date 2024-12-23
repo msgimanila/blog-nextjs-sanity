@@ -9,7 +9,7 @@ import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
 
-import { Suspense } from 'react'; // Import Suspense from React
+import { Suspense } from 'react' 
 
 export function ProjectSlugRoute(props: PageProps) {
   const { settings, post, morePosts, preview, token } = props;
