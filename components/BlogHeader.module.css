@@ -2,7 +2,4 @@
   @apply underline transition-colors duration-200 hover:text-success;
 }
  
-/* Apply padding to the body element */
-body {
-  @apply p-4; /* Applies padding of 1rem (4 units in Tailwind) */
-}
+ 
