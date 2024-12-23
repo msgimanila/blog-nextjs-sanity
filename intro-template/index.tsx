@@ -33,7 +33,7 @@ export default memo(function IntroTemplate() {
   }, [])
 
   if (hasUTMtags || !studioURL) {
-    return
+    return null
   }
 
   return (
@@ -41,31 +41,33 @@ export default memo(function IntroTemplate() {
       <div className="mb-8 mt-20 grid max-w-screen-2xl grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32 ">
         <div className="self-center">
           <Image
-            alt="An illustration of a browser window, a terminal window, the Sanity.io logo and the NextJS logo"
+            alt="An illustration of a browser window, a terminal window, the Sanity.io logo, and the NextJS logo"
             src={cover}
           />
           <div className="mt-10 hidden px-14 text-xs text-gray-700 md:block">
             <RemoveBlock url={removeBlockURL} />
           </div>
         </div>
-{morePosts.length > 0 && (
-  <div className="more-stories-section">
-    <h2>More Stories</h2>
-    <div className="stories-grid">
-      {morePosts.map((post) => (
-        <div key={post.slug.current} className="post-preview">
-          <Link href={`/post/${post.slug.current}`}>
-            <a>
-              <img src={post.coverImage.url} alt={post.title} />
-              <h3>{post.title}</h3>
-              <p>{post.excerpt}</p>
-            </a>
-          </Link>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
+
+        {/* Add more posts section if necessary */}
+        {morePosts?.length > 0 && (
+          <div className="more-stories-section">
+            <h2>More Stories</h2>
+            <div className="stories-grid">
+              {morePosts.map((post) => (
+                <div key={post.slug.current} className="post-preview">
+                  <Link href={`/post/${post.slug.current}`}>
+                    <a>
+                      <img src={post.coverImage.url} alt={post.title} />
+                      <h3>{post.title}</h3>
+                      <p>{post.excerpt}</p>
+                    </a>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div className="mx-6 md:mx-0 md:mr-24">
           <h2 className="mb-8 text-xl font-bold tracking-wide md:text-5xl">
@@ -80,10 +82,8 @@ export default memo(function IntroTemplate() {
               {`It looks like you haven't set up the local environment variables.`}
               <p>
                 <a
-                  href={
-                    'https://blog-nextjs-sanity-alpha-rust.vercel.app/posts/reacts-sanity'
-                  }
-                  className={`mx-1 underline hover:text-blue-800`}
+                  href="https://blog-nextjs-sanity-alpha-rust.vercel.app/posts/reacts-sanity"
+                  className="mx-1 underline hover:text-blue-800"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -94,8 +94,6 @@ export default memo(function IntroTemplate() {
           )}
 
           <ol>
-
-            
             <Box
               circleTitle="1"
               element={
@@ -104,15 +102,6 @@ export default memo(function IntroTemplate() {
                     Create content with Sanity Studio
                   </div>
                   <div className="text-xs text-gray-700">
-                    Your Sanity Studio is deployed at
-                    <Link
-                      className="mx-1 underline hover:text-blue-800"
-                      href={studioURL}
-                    >
-                      {studioURL}
-                    </Link>
-                  </div>
- <div className="text-xs text-gray-700">
                     Your Sanity Studio is deployed at
                     <Link
                       className="mx-1 underline hover:text-blue-800"
@@ -199,16 +188,11 @@ export default memo(function IntroTemplate() {
                         text="Documentation for Next.js"
                       />
                     </li>
-                    
-                    </li>
                   </ul>
                 </div>
               }
             />
           </ol>
-          <div className="text-center text-xs text-gray-700 md:invisible">
-         
-          </div>
         </div>
       </div>
     </div>
@@ -246,8 +230,6 @@ function BlueLink({ href, text }: { href: string; text: string }) {
     </a>
   )
 }
-
- 
 
 function getGitProvider() {
   switch (process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER) {
