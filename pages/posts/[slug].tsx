@@ -8,7 +8,40 @@ import {
 import { Post, Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import { lazy } from 'react'
- 
+
+import { Suspense } from 'react'; // Import Suspense from React
+
+export default function ProjectSlugRoute(props: PageProps) {
+  const { settings, post, morePosts, preview, token } = props;
+
+  if (preview) {
+    return (
+      <Suspense fallback={<div>Loading Preview...</div>}> {/* Adding Suspense here */}
+        <PreviewSuspense
+          fallback={
+            <PostPage
+              loading
+              preview
+              post={post}
+              morePosts={morePosts}
+              settings={settings}
+            />
+          }
+        >
+          <PreviewPostPage
+            token={token}
+            post={post}
+            morePosts={morePosts}
+            settings={settings}
+          />
+        </PreviewSuspense>
+      </Suspense>
+    );
+  }
+
+  return <PostPage post={post} morePosts={morePosts} settings={settings} />;
+}
+
 
 const PreviewPostPage = lazy(() => import('components/PreviewPostPage'))
 
