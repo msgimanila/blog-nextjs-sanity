@@ -63,7 +63,7 @@ export default memo(function IntroTemplate() {
               <p>
                 <a
                   href={
-                    'https://github.com/sanity-io/nextjs-blog-cms-sanity-v3#step-2-set-up-the-project-locally'
+                    'https://blog-nextjs-sanity-alpha-rust.vercel.app/posts/reacts-sanity'
                   }
                   className={`mx-1 underline hover:text-blue-800`}
                   target="_blank"
@@ -92,7 +92,15 @@ export default memo(function IntroTemplate() {
                       {studioURL}
                     </Link>
                   </div>
-
+ <div className="text-xs text-gray-700">
+                    Your Sanity Studio is deployed at
+                    <Link
+                      className="mx-1 underline hover:text-blue-800"
+                      href={studioURL}
+                    >
+                      {studioURL}
+                    </Link>
+                  </div>
                   <div className="mt-3">
                     <Link
                       className="inline-flex rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
