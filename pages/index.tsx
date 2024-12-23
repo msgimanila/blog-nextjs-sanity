@@ -6,7 +6,7 @@ import { GetStaticProps } from 'next'
 import { lazy } from 'react'
 import Link from 'next/link'
 
-export default function IndexPage({ posts, settings, loading }) {
+export function IndexPage({ posts, settings, loading }) {
   if (loading) return <p>Loading...</p>;
 
   return (
