@@ -254,13 +254,3 @@ const PostTitle = () => {
   );
 };
 
-const PostTitle = () => {
-  let test1 = 'some value'; // Declare test1 inside the function or component
-
-  console.log(test1); // Output the value of test1
-  return (
-    <div>
-      <h1>{test1}</h1>
-    </div>
-  );
-};
