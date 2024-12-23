@@ -45,7 +45,7 @@ export default memo(function IntroTemplate() {
             src={cover}
           />
           <div className="mt-10 hidden px-14 text-xs text-gray-700 md:block">
-            <RemoveBlock url={removeBlockURL} />
+           
           </div>
         </div>
 
