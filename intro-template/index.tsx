@@ -199,11 +199,7 @@ export default memo(function IntroTemplate() {
                         text="Documentation for Next.js"
                       />
                     </li>
-                    <li className="mb-2">
-                      <BlueLink
-                        href="https://slack.sanity.io/"
-                        text="Join the Sanity Community"
-                      />
+                    
                     </li>
                   </ul>
                 </div>
@@ -211,7 +207,7 @@ export default memo(function IntroTemplate() {
             />
           </ol>
           <div className="text-center text-xs text-gray-700 md:invisible">
-            <RemoveBlock url={removeBlockURL} />
+         
           </div>
         </div>
       </div>
@@ -251,16 +247,7 @@ function BlueLink({ href, text }: { href: string; text: string }) {
   )
 }
 
-const RemoveBlock = ({ url }) => (
-  <a
-    className="hover:text-blue-800"
-    href={url}
-    target="_blank"
-    rel="noreferrer"
-  >
-   
-  </a>
-)
+ 
 
 function getGitProvider() {
   switch (process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER) {
