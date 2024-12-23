@@ -241,3 +241,26 @@ function getGitProvider() {
       return 'GitHub'
   }
 }
+
+let test1 = 'some value'; // Declare test1 globally in the scope of your component or function
+
+const PostTitle = () => {
+  // You can use test1 here
+  console.log(test1); // Output the value of test1
+  return (
+    <div>
+      <h1>{test1}</h1>
+    </div>
+  );
+};
+
+const PostTitle = () => {
+  let test1 = 'some value'; // Declare test1 inside the function or component
+
+  console.log(test1); // Output the value of test1
+  return (
+    <div>
+      <h1>{test1}</h1>
+    </div>
+  );
+};
