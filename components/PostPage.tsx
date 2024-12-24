@@ -7,6 +7,7 @@ import PostHeader from 'components/PostHeader'
 import PostPageHead from 'components/PostPageHead'
 import PostTitle from 'components/PostTitle'
 import SectionSeparator from 'components/SectionSeparator'
+import CoverImage from 'components/CoverImage'
 import * as demo from 'lib/demo.data'
 import type { Post, Settings } from 'lib/sanity.queries'
 import { notFound } from 'next/navigation'
@@ -43,6 +44,17 @@ export default function PostPage(props: PostPageProps) {
           ) : (
             <>
               <article>
+                {/* Display the featured image */}
+                {post.coverImage && (
+                  <div className="mb-8">
+                    <CoverImage
+                      slug={slug}
+                      title={post.title}
+                      image={post.coverImage}
+                      priority
+                    />
+                  </div>
+                )}
                 <PostHeader
                   title={post.title}
                   coverImage={post.coverImage}
