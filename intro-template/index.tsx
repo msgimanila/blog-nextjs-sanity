@@ -1,54 +1,51 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { memo, useEffect, useState } from 'react'
-
- 
+import Image from 'next/image';
+import Link from 'next/link';
+import { memo, useEffect, useState } from 'react';
 
 export default memo(function IntroTemplate() {
-  const [studioURL, setStudioURL] = useState(null)
-  const [createPostURL, setCreatePostURL] = useState(null)
-  const [isLocalHost, setIsLocalhost] = useState(false)
+  const [studioURL, setStudioURL] = useState<string | null>(null);
+  const [createPostURL, setCreatePostURL] = useState<string | null>(null);
+  const [isLocalHost, setIsLocalhost] = useState(false);
+  const [hasUTMtags, setHasUTMtags] = useState(false);
 
-  const hasEnvFile = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+  const hasEnvFile = !!process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
   const hasRepoEnvVars =
-    process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER &&
-    process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER &&
-    process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG
-  const repoURL = `https://${process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER}.com/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER}/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG}`
+    !!process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER &&
+    !!process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER &&
+    !!process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG;
+
+  const repoURL = hasRepoEnvVars
+    ? `https://${process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER}.com/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER}/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG}`
+    : '';
+
   const removeBlockURL = hasRepoEnvVars
     ? `https://${process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER}.com/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_OWNER}/${process.env.NEXT_PUBLIC_VERCEL_GIT_REPO_SLUG}/blob/main/README.md#how-can-i-remove-the-next-steps-block-from-my-blog`
-    : `https://github.com/sanity-io/nextjs-blog-cms-sanity-v3#how-can-i-remove-the-next-steps-block-from-my-blog`
-
-  const [hasUTMtags, setHasUTMtags] = useState(false)
+    : `https://github.com/sanity-io/nextjs-blog-cms-sanity-v3#how-can-i-remove-the-next-steps-block-from-my-blog`;
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setStudioURL(`${window.location.origin}/studio`)
+      setStudioURL(`${window.location.origin}/studio`);
       setCreatePostURL(
         `${window.location.origin}/studio/intent/create/template=post;type=post/`
-      )
-      setIsLocalhost(window.location.hostname === 'localhost')
-      setHasUTMtags(window.location.search.includes('utm'))
+      );
+      setIsLocalhost(window.location.hostname === 'localhost');
+      setHasUTMtags(window.location.search.includes('utm'));
     }
-  }, [])
+  }, []);
 
   if (hasUTMtags || !studioURL) {
-    return null
+    return null;
   }
 
   return (
     <div className="flex justify-center border border-gray-200 bg-gray-50 p-4">
-      <div className="mb-8 mt-20 grid max-w-screen-2xl grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32 ">
+      <div className="mb-8 mt-20 grid max-w-screen-2xl grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
         <div className="self-center">
-         
-          <div className="mt-10 hidden px-14 text-xs text-gray-700 md:block">
-           
-          </div>
+          <div className="mt-10 hidden px-14 text-xs text-gray-700 md:block"></div>
         </div>
 
- 
-
-        <div className="mx-6 md:mx-0 md:mr-24"> </hr>
+        <div className="mx-6 md:mx-0 md:mr-24">
+          <hr />
           <h2 className="mb-8 text-xl font-bold tracking-wide md:text-5xl">
             CODES
           </h2>
@@ -84,7 +81,7 @@ export default memo(function IntroTemplate() {
                     Your Sanity Studio is deployed at
                     <Link
                       className="mx-1 underline hover:text-blue-800"
-                      href={studioURL}
+                      href={studioURL || '#'}
                     >
                       {studioURL}
                     </Link>
@@ -92,7 +89,7 @@ export default memo(function IntroTemplate() {
                   <div className="mt-3">
                     <Link
                       className="inline-flex rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
-                      href={createPostURL}
+                      href={createPostURL || '#'}
                     >
                       Go to Sanity Studio
                     </Link>
@@ -100,7 +97,6 @@ export default memo(function IntroTemplate() {
                 </div>
               }
             />
-
             <Box
               circleTitle="2"
               element={
@@ -108,7 +104,6 @@ export default memo(function IntroTemplate() {
                   <div className="col-span-2 mb-2 mt-1 font-semibold">
                     Modify and deploy the project
                   </div>
-
                   {isLocalHost ? (
                     <div className="text-xs text-gray-700">
                       Start editing your content structure by changing the post
@@ -130,7 +125,6 @@ export default memo(function IntroTemplate() {
                           {repoURL}
                         </a>
                       </div>
-
                       <div className="mt-3">
                         <a
                           className="inline-flex rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
@@ -146,7 +140,6 @@ export default memo(function IntroTemplate() {
                 </div>
               }
             />
-
             <Box
               circleTitle="3"
               element={
@@ -175,15 +168,15 @@ export default memo(function IntroTemplate() {
         </div>
       </div>
     </div>
-  )
-})
+  );
+});
 
 function Box({
   circleTitle,
   element,
 }: {
-  circleTitle: string
-  element: JSX.Element
+  circleTitle: string;
+  element: JSX.Element;
 }) {
   return (
     <li className="mt-2 grid grid-flow-col grid-rows-1 place-content-start gap-3">
@@ -194,7 +187,7 @@ function Box({
       </div>
       {element}
     </li>
-  )
+  );
 }
 
 function BlueLink({ href, text }: { href: string; text: string }) {
@@ -207,18 +200,16 @@ function BlueLink({ href, text }: { href: string; text: string }) {
     >
       {text}
     </a>
-  )
+  );
 }
 
 function getGitProvider() {
   switch (process.env.NEXT_PUBLIC_VERCEL_GIT_PROVIDER) {
     case 'gitlab':
-      return 'GitLab'
+      return 'GitLab';
     case 'bitbucket':
-      return 'Bitbucket'
+      return 'Bitbucket';
     default:
-      return 'GitHub'
+      return 'GitHub';
   }
 }
-
- 
