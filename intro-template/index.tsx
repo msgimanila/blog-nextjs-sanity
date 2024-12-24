@@ -50,7 +50,7 @@ export default memo(function IntroTemplate() {
       
         )}
 
-        <div className="mx-6 md:mx-0 md:mr-24">
+        <div className="mx-6 md:mx-0 md:mr-24"><hr></hr>
           <h2 className="mb-8 text-xl font-bold tracking-wide md:text-5xl">
             CODES
           </h2>
