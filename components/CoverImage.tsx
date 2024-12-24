@@ -25,8 +25,8 @@ export default function CoverImage(props: CoverImageProps) {
         'transition-shadow duration-200 hover:shadow-medium': slug,
       })}
       layout="responsive"
-      width={700} // Replace with the actual width of your image
-      height={400} // Replace with the actual height of your image
+      width={1700} // Replace with the actual width of your image
+      height={1400} // Replace with the actual height of your image
       priority={priority}
     />
   ) : (
