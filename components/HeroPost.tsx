@@ -13,6 +13,10 @@ export default function HeroPost(
   const { title, coverImage, date, excerpt, author, slug } = props
   return (
     <section>
+       {/* Top black bar */}
+      <div className="w-full bg-black text-white py-4 text-center">
+        <p className="text-sm md:text-lg">CMS Headless</p>
+      </div>
       <div className="mb-8 md:mb-16">
         <CoverImage slug={slug} title={title} image={coverImage} priority />
       </div>
