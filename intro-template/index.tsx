@@ -47,8 +47,6 @@ export default memo(function IntroTemplate() {
         </div>
 
  
-      
-    ----------------
 
         <div className="mx-6 md:mx-0 md:mr-24"> </hr>
           <h2 className="mb-8 text-xl font-bold tracking-wide md:text-5xl">
