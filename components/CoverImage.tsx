@@ -12,14 +12,23 @@ interface CoverImageProps {
 
 export default function CoverImage(props: CoverImageProps) {
   const { title, slug, image: source, priority } = props
-  const image = source?.asset?._ref ? (
-    <div
+
+  // Generate the image URL using the provided `urlForImage` function
+  const imageUrl = source?.asset?._ref ? urlForImage(source).url() : null
+
+  // Render the image or fallback
+  const image = imageUrl ? (
+    <Image
+      src={imageUrl}
+      alt={`Cover Image for ${title}`}
       className={cn('shadow-small', {
         'transition-shadow duration-200 hover:shadow-medium': slug,
       })}
-    >
-     
-    </div>
+      layout="responsive"
+      width={700} // Replace with the actual width of your image
+      height={400} // Replace with the actual height of your image
+      priority={priority}
+    />
   ) : (
     <div style={{ paddingTop: '50%', backgroundColor: '#ddd' }} />
   )
@@ -28,7 +37,7 @@ export default function CoverImage(props: CoverImageProps) {
     <div className="sm:mx-0">
       {slug ? (
         <Link href={`/posts/${slug}`} aria-label={title}>
-          
+          {image}
         </Link>
       ) : (
         image
